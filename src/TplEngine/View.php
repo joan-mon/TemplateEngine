@@ -52,6 +52,7 @@ class View
             self::$contentToRender = $templateContent;
             $templateContent = self::requireIntoString(array_pop(self::$templateHeap));
         }
+
         return $templateContent;
     }
 
@@ -65,32 +66,25 @@ class View
 
     /**
      * It saves variable into template engine.
-     * @param string     $name
+     *
+     *@param string $key
      * @param string|int $value
      */
-    public static function set($name, $value)
+    public static function set($key, $value)
     {
-        self::$vars[$name] = $value;
+        self::$vars[$key] = $value;
     }
 
     /**
      * It gets one variable saved previously.
-     * @param string $name
+     *
+     *@param string $key
      *
      * @return mixed
      */
-    public static function get($name)
+    public static function get($key)
     {
-        return isset(self::$vars[$name]) ? self::$vars[$name] : null;
-    }
-
-    /**
-     * It prints one variable saved previously.
-     * @param string $name
-     */
-    public static function printVar($name)
-    {
-        echo isset(self::$vars[$name]) ? self::$vars[$name] : '';
+        return isset(self::$vars[$key]) ? self::$vars[$key] : null;
     }
 
     /**

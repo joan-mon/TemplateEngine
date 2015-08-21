@@ -22,7 +22,6 @@ class ViewTest extends \PHPUnit_Framework_TestCase
     public function testViewCanRenderVar()
     {
         View::set('varname', 'varname');
-        $this->assertEquals('varname', View::render('testvar.phtml'));
         $this->assertEquals('varname', View::render('getvar.phtml'));
     }
     public function testViewMultiInherit()

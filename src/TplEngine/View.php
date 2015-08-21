@@ -11,11 +11,11 @@ class View
     /**
      * @var array
      */
-    private static $extend = [];
+    private static $templateHeap = [];
     /**
      * @var string
      */
-    private static $content = '';
+    private static $contentToRender = '';
     /**
      * @var array
      */
@@ -36,7 +36,7 @@ class View
      */
     public static function templateExtend($template)
     {
-        array_push(self::$extend, $template);
+        array_push(self::$templateHeap, $template);
     }
 
     /**
@@ -47,14 +47,12 @@ class View
      */
     public static function render($template)
     {
-        $text = self::requireIntoString($template);
-
-        while (!empty(self::$extend)) {
-            self::$content = $text;
-            $text = self::requireIntoString(array_pop(self::$extend));
+        $templateContent = self::requireIntoString($template);
+        while (!empty(self::$templateHeap)) {
+            self::$contentToRender = $templateContent;
+            $templateContent = self::requireIntoString(array_pop(self::$templateHeap));
         }
-
-        return $text;
+        return $templateContent;
     }
 
     /**
@@ -62,7 +60,7 @@ class View
      */
     public static function content()
     {
-        echo self::$content;
+        echo self::$contentToRender;
     }
 
     /**

@@ -23,7 +23,7 @@ Getting started
            |_ simple-template.phtml
            |_ script.php
 ```
-```
+```html
 <!-- simple-template.phtml -->
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ Getting started
    </body>
 </html>
 ```
-```
+```php
 <?php
  // script.php
 use jmon\TplEngine\View;
@@ -44,7 +44,7 @@ View::set('title', 'hello world!');
 echo View::render('simple-template.phtml');
 ?>
 ```
-```
+```html
 <!-- final rendering -->
 <!DOCTYPE html>
 <html>
@@ -63,7 +63,7 @@ echo View::render('simple-template.phtml');
            |_ home/index.phtml
            |_ script.php
 ```
-```
+```html
 <!-- layout.phtml -->
 <!DOCTYPE html>
 <html>
@@ -76,12 +76,12 @@ echo View::render('simple-template.phtml');
    </body>
 </html>
 ```
-```
+```html
 <!-- home/index.phtml -->
 <?php \jmon\TplEngine\View::templateExtend('layout.phtml')?>
 <h1><?= \jmon\TplEngine\View::get('title') ?></h1>
 ```
-```
+```php
 <?php
  // script.php
 use jmon\TplEngine\View;
@@ -90,7 +90,7 @@ View::set('title', 'hello world!');
 echo View::render('/home/index.phtml');
 ?>
 ```
-```
+```html
 <!-- final rendering -->
 <!DOCTYPE html>
 <html>
@@ -109,7 +109,7 @@ echo View::render('/home/index.phtml');
            |_ partial.phtml
            |_ script.php
 ```
-```
+```html
 <!-- template.phtml -->
 <!DOCTYPE html>
 <html>
@@ -122,11 +122,11 @@ echo View::render('/home/index.phtml');
    </body>
 </html>
 ```
-```
+```html
 <!-- partial.phtml -->
 <footer><?= \jmon\TplEngine\View::get('footer-text') ?></footer>
 ```
-```
+```php
 <?php
  // script.php
 use jmon\TplEngine\View;
@@ -136,7 +136,7 @@ View::set('footer-text', 'Awesome footer!');
 echo View::render('template.phtml');
 ?>
 ```
-```
+```html
 <!-- final rendering -->
 <!DOCTYPE html>
 <html>
